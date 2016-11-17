@@ -9,6 +9,5 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:id="@+id/descricao"
-        android:contentDescription="Descrição da Turma"
-        android:text="Descrição da Turma" />
+        android:contentDescription="Descrição da Turma" />
 </LinearLayout>

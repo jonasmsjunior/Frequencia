@@ -7,6 +7,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import software.ifto.frequencia.DAO.TurmaDao;
+import software.ifto.frequencia.model.Turma;
+
 
 public class FormularioTurmaActivity extends AppCompatActivity {
 
@@ -25,14 +28,19 @@ public class FormularioTurmaActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        FormularioTurmaHelper helper = new FormularioTurmaHelper(this);
         switch (item.getItemId()) {
             case R.id.menu_formulario_ok:
-                Toast.makeText(FormularioTurmaActivity.this, "Turma adicionada!", Toast.LENGTH_SHORT).show();
+                Turma turma = helper.pegaTurma();
+
+                TurmaDao dao = new TurmaDao(this);
+                dao.insere(turma);
+                dao.close();
+
+                Toast.makeText(FormularioTurmaActivity.this, "Turma "+turma.getDescricao()+" adicionada!", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
-
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
