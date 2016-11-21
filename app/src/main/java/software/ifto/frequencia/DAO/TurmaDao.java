@@ -59,4 +59,11 @@ public class TurmaDao extends SQLiteOpenHelper {
         c.close();
         return turmas;
     }
+
+    public void deleta(Turma turma) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        String [] params = {turma.getId().toString()};
+        db.delete("Turmas", "id = ?", params);
+    }
 }
