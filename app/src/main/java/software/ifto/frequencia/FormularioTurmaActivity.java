@@ -1,5 +1,6 @@
 package software.ifto.frequencia;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -13,10 +14,20 @@ import software.ifto.frequencia.model.Turma;
 
 public class FormularioTurmaActivity extends AppCompatActivity {
 
+    private FormularioTurmaHelper helper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_turma);
+
+        helper = new FormularioTurmaHelper(this);
+
+        Intent intente = getIntent();
+        Turma turma = (Turma) intente.getSerializableExtra("turma");
+        if(turma != null){
+            helper.preencheFormulario(turma);
+        }
     }
 
     @Override

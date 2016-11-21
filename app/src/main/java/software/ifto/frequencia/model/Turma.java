@@ -1,8 +1,9 @@
 package software.ifto.frequencia.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Turma {
+public class Turma implements Serializable{
     private Integer id;
     private String descricao;
     private Date dataCriacao;

@@ -16,18 +16,28 @@ public class FormularioTurmaHelper {
     private Date campoDataCriacao;
     private Date campoDataAlteracao;
 
+    private Turma turma;
+
     public FormularioTurmaHelper (FormularioTurmaActivity activity)  {
         campoDescricao      = (EditText) activity.findViewById(R.id.descricao);
         campoDataAlteracao  = new Date();
         campoDataCriacao    = new Date();
+
+        turma = new Turma();
     }
 
     public Turma pegaTurma(){
-        Turma turma = new Turma();
+
         turma.setDescricao(campoDescricao.getText().toString());
         turma.setDataAlteracao(campoDataAlteracao);
         turma.setDataCriacao(campoDataCriacao);
 
         return turma;
+    }
+
+    public void preencheFormulario(Turma turma) {
+        campoDescricao.setText(turma.getDescricao());
+
+        this.turma = turma;
     }
 }

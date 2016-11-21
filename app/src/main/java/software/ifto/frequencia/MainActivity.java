@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> lista, View turma_s, int i, long l) {
                 Turma turma = (Turma) listaTurma.getItemAtPosition(i);
-                Toast.makeText(MainActivity.this, "Turma "+turma.getDescricao()+" clicada", Toast.LENGTH_SHORT).show();
+                Intent intentGoFormulario = new Intent(MainActivity.this, FormularioTurmaActivity.class);
+                intentGoFormulario.putExtra("turma",turma);
+                startActivity(intentGoFormulario);
             }
         });
 
