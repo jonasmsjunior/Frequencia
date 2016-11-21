@@ -1,6 +1,7 @@
 package software.ifto.frequencia;
 
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 import java.util.Date;
@@ -37,7 +38,6 @@ public class FormularioTurmaHelper {
 
     public void preencheFormulario(Turma turma) {
         campoDescricao.setText(turma.getDescricao());
-
         this.turma = turma;
     }
 }

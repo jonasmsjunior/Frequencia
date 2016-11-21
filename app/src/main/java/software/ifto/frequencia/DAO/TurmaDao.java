@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,11 +37,17 @@ public class TurmaDao extends SQLiteOpenHelper {
 
     public void insere(Turma turma){
         SQLiteDatabase db = getWritableDatabase();
+        ContentValues dados = getContentValuesTurma(turma);
+        db.insert("Turmas",null,dados);
+    }
+
+    @NonNull
+    private ContentValues getContentValuesTurma(Turma turma) {
         ContentValues dados = new ContentValues();
         dados.put("descricao", turma.getDescricao());
         dados.put("data_alteracao", turma.getDataAlteracao().toString());
         dados.put("data_criacao", turma.getDataCriacao().toString());
-        db.insert("Turmas",null,dados);
+        return dados;
     }
 
     public List<Turma> busca(){
@@ -66,4 +73,13 @@ public class TurmaDao extends SQLiteOpenHelper {
         String [] params = {turma.getId().toString()};
         db.delete("Turmas", "id = ?", params);
     }
+
+    public void altera(Turma turma) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues dados = getContentValuesTurma(turma);
+        String[] params = {turma.getId().toString()};
+        db.update("Turmas", dados, "id = ?", params);
+    }
+
 }

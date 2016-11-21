@@ -39,16 +39,22 @@ public class FormularioTurmaActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        FormularioTurmaHelper helper = new FormularioTurmaHelper(this);
+
         switch (item.getItemId()) {
             case R.id.menu_formulario_ok:
                 Turma turma = helper.pegaTurma();
-
                 TurmaDao dao = new TurmaDao(this);
-                dao.insere(turma);
+
+                if(turma.getId() != null){
+                    dao.altera(turma);
+                    Toast.makeText(FormularioTurmaActivity.this, "Turma "+turma.getDescricao()+" alterada!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    dao.insere(turma);
+                    Toast.makeText(FormularioTurmaActivity.this, "Turma "+turma.getDescricao()+" adicionada!", Toast.LENGTH_SHORT).show();
+                }
                 dao.close();
 
-                Toast.makeText(FormularioTurmaActivity.this, "Turma "+turma.getDescricao()+" adicionada!", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
         }
