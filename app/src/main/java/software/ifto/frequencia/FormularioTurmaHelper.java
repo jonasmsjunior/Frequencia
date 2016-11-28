@@ -24,7 +24,6 @@ public class FormularioTurmaHelper {
         campoDataAlteracao  = new Date();
         campoDataCriacao    = new Date();
 
-        campoDataAlteracao = new Date();
 
         turma = new Turma();
     }

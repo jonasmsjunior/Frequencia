@@ -19,6 +19,7 @@ import software.ifto.frequencia.model.Turma;
 
 public class TurmaDao extends SQLiteOpenHelper {
     public TurmaDao(Context context) {
+
         super(context, "Frequencia", null, 1);
     }
 
