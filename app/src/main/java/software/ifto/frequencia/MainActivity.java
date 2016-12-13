@@ -52,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intentGoFormularioTurma = new Intent(MainActivity.this, FormularioTurmaActivity.class);
+                        intentGoFormularioTurma.putExtra('teste',teste);
+                        intentGoFormularioTurma.putExtra('teste1',teste);
+                        intentGoFormularioTurma.putExtra('teste2',teste);
+                        getIntent()
                         startActivity(intentGoFormularioTurma);
                     }
                 }
